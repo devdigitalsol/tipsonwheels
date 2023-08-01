@@ -49,9 +49,10 @@ export default function DoctorDetails() {
     docDetails.speciality?.trim().length,
     docDetails.city_region?.trim().length,
     docDetails.state?.trim().length,
-    imgFile,
+    // imgFile,
     terms,
   ].every(Boolean);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -66,24 +67,29 @@ export default function DoctorDetails() {
       return false;
     }
 
-    if (!docDetails?.media_path.trim().length) {
-      const { media_path } = await actionUploadPhoto(photo);
-      if (media_path) {
-        const uploadAllDocData = await updateDoctor({
-          ...docDetails,
-          media_path: media_path,
-        });
-        setDocInfo({ ...docDetails, media_path: media_path });
-        setIsUpdated(uploadAllDocData);
-      }
-    } else {
-      const uploadAllDocData = await updateDoctor({
-        ...docDetails,
-      });
-      setIsUpdated(uploadAllDocData);
-      setDocInfo(docDetails);
-    }
+    const uploadAllDocData = await updateDoctor(docDetails);
+    setDocInfo(docDetails);
+    setIsUpdated(uploadAllDocData);
+
+    // if (!docDetails?.media_path.trim().length) {
+    //   const { media_path } = await actionUploadPhoto(photo);
+    //   if (media_path) {
+    //     const uploadAllDocData = await updateDoctor({
+    //       ...docDetails,
+    //       media_path: media_path,
+    //     });
+    //     setDocInfo({ ...docDetails, media_path: media_path });
+    //     setIsUpdated(uploadAllDocData);
+    //   }
+    // } else {
+    //   const uploadAllDocData = await updateDoctor({
+    //     ...docDetails,
+    //   });
+    //   setIsUpdated(uploadAllDocData);
+    //   setDocInfo(docDetails);
+    // }
   };
+
   useEffect(() => {
     if (isUpdated && docDetails?.tips_submitted) {
       toast.success("Doctor updated successfully");
@@ -186,7 +192,7 @@ export default function DoctorDetails() {
                 })}
               </select>
             </div>
-            <div className="form-group !py-1 items-center">
+            {/* <div className="form-group !py-1 items-center">
               <AiFillIdcard className="text-primary text-2xl" />
               <label
                 htmlFor="photo"
@@ -200,15 +206,15 @@ export default function DoctorDetails() {
                   onChange={selectImg}
                 />
               </label>
-            </div>
-            <span className="text-xs">
+            </div> */}
+            {/* <span className="text-xs">
               Note: Browse photo of Visiting Card of Blank Rx Pad of Doctor
             </span>
             {imgFile && (
               <div className="w-40 mx-auto">
                 <img src={imgFile} alt="photo" />
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="flex items-center gap-2 justify-center">

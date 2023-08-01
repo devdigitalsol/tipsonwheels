@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
+// import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 export default function DoctorItem({ doc }) {
   return (
     <Link
@@ -28,21 +28,20 @@ export default function DoctorItem({ doc }) {
           </div>
         </>
       )}
-      {doc?.tips_submitted && doc?.status === "rejected-1" && (
+      {/* {doc?.tips_submitted && doc?.status === "rejected-1" && (
         <>
           <div className="px-1 py-0.5 text-xs font-medium text-white transition-opacity duration-300 bg-red-600 rounded shadow-sm inline-block">
             Uploaded Image is not appropriate
           </div>
         </>
-      )}
-      {doc?.tips_submitted && doc?.status === "rejected-2" && (
+      )} */}
+      {/* {doc?.tips_submitted && doc?.status === "rejected-1" && (
         <>
-          <AiFillCloseCircle />
           <div className="px-1 py-0.5 text-xs font-medium text-white transition-opacity duration-300 bg-red-600 rounded shadow-sm inline-block">
             Entered data is not appropriate
           </div>
         </>
-      )}
+      )} */}
     </Link>
   );
 }
