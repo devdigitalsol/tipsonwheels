@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import { AiFillIdcard } from "react-icons/ai";
@@ -251,7 +251,18 @@ export default function DoctorDetails() {
             any liability arising from its reliance on the same. I understand
             that no data will be retained by the Company post the event. I agree
             that the all contents used for promotion of the event shall be the
-            property of Dr. Reddy's, and meant for its use only.
+            property of Dr. Reddy's, and meant for its use only. I have read the
+            terms and conditions of the Dr. Reddy's data privacy policy as
+            mentioned in
+            <a
+              href=""
+              // href="https://www.drreddys.com/privacy-policy#:~:text=We%20will%20not%20knowingly%20collect,through%20direct%20off%2Dline%20contact"
+              className=" break-all "
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.drreddys.com/privacy-policy#:~:text=We%20will%20not%20knowingly%20collect,through%20direct%20off%2Dline%20contact
+            </a>
           </p>
         </Modal>
       )}
