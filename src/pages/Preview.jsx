@@ -160,14 +160,15 @@ export default function Preview() {
               );
             })}
           </div>
-          <div className="flex flex-col items-center text-white absolute w-full md:top-[395px] top-[328px]">
-            <div className="leading-5 uppercase md:text-base text-sm">
+          <div className="flex flex-col items-center text-white absolute w-full md:top-[390px] top-[318px] capitalize">
+            <div className="leading-5 capitalize md:text-base text-sm ">
+              DR.
               {docInfo?.doctor_name}
             </div>
-            <div className="md:text-[13px] text-[11px] leading-3">
+            <div className="md:text-[13px] text-[11px] leading-3 capitalize ">
               {docInfo?.speciality}
             </div>
-            <div className="md:text-[11px] text-[9px] leading-3">
+            <div className="md:text-[11px] text-[9px] leading-3 capitalize">
               {docInfo?.city_region}, {docInfo?.state}
             </div>
           </div>

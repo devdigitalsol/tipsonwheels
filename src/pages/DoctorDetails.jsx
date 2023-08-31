@@ -255,11 +255,11 @@ export default function DoctorDetails() {
             terms and conditions of the Dr. Reddy's data privacy policy as
             mentioned in
             <a
-              href=""
-              // href="https://www.drreddys.com/privacy-policy#:~:text=We%20will%20not%20knowingly%20collect,through%20direct%20off%2Dline%20contact"
-              className=" break-all "
+              href="https://www.drreddys.com/privacy-policy#:~:text=We%20will%20not%20knowingly%20collect,through%20direct%20off%2Dline%20contact"
+              className=" break-all text-primary "
               target="_blank"
               rel="noopener noreferrer"
+              style={{ marginLeft: "5px" }}
             >
               https://www.drreddys.com/privacy-policy#:~:text=We%20will%20not%20knowingly%20collect,through%20direct%20off%2Dline%20contact
             </a>
