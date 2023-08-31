@@ -1,6 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { apiService } from "../services/apiService";
+import { titleCase } from "../utils";
 
 export const AppContext = createContext();
 
@@ -111,8 +112,8 @@ export const AppState = ({ children }) => {
         operation: "update_doctor",
         tm_id: user?.tm_id,
         doctor_code: docinfo.doctor_code,
-        doctor_name: docinfo.doctor_name,
-        speciality: docinfo.speciality,
+        doctor_name: titleCase(docinfo.doctor_name),
+        speciality: titleCase(docinfo.speciality),
         city_region: docinfo.city_region,
         state: docinfo.state,
         media_path: docinfo.media_path,

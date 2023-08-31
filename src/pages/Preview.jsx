@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import { jsPDF } from "jspdf";
 import PDFBG from "./../assets/images/tipbg.png";
 import slugify from "slugify";
+import { titleCase } from "../utils";
 
 export default function Preview() {
   const navigate = useNavigate();
@@ -52,9 +53,9 @@ export default function Preview() {
       doc.setFont("helvetica", "", "bold");
       doc.setTextColor(255, 255, 255);
       doc.text(
-        docInfo?.doctor_name,
+        titleCase(docInfo?.doctor_name),
         doc.internal.pageSize.getWidth() / 2,
-        6.3,
+        6.2,
         {
           align: "center",
         }
@@ -62,9 +63,9 @@ export default function Preview() {
       doc.setFontSize(14);
       doc.setFont("helvetica", "", "bold");
       doc.text(
-        docInfo?.speciality,
+        titleCase(docInfo?.speciality),
         doc.internal.pageSize.getWidth() / 2,
-        6.55,
+        6.45,
         {
           align: "center",
         }
@@ -74,7 +75,7 @@ export default function Preview() {
       doc.text(
         `${docInfo?.city_region}, ${docInfo?.state}`,
         doc.internal.pageSize.getWidth() / 2,
-        6.75,
+        6.65,
         {
           align: "center",
         }
@@ -160,15 +161,14 @@ export default function Preview() {
               );
             })}
           </div>
-          <div className="flex flex-col items-center text-white absolute w-full md:top-[390px] top-[318px] capitalize">
-            <div className="leading-5 capitalize md:text-base text-sm ">
-              DR.
-              {docInfo?.doctor_name}
+          <div className="flex flex-col items-center text-white absolute w-full md:top-[395px] top-[328px]">
+            <div className="leading-5 uppercase md:text-base text-sm">
+              {titleCase(docInfo?.doctor_name)}
             </div>
-            <div className="md:text-[13px] text-[11px] leading-3 capitalize ">
-              {docInfo?.speciality}
+            <div className="md:text-[13px] text-[11px] leading-3">
+              {titleCase(docInfo?.speciality)}
             </div>
-            <div className="md:text-[11px] text-[9px] leading-3 capitalize">
+            <div className="md:text-[11px] text-[9px] leading-3">
               {docInfo?.city_region}, {docInfo?.state}
             </div>
           </div>
