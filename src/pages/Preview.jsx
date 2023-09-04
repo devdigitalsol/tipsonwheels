@@ -53,7 +53,7 @@ export default function Preview() {
       doc.setFont("helvetica", "", "bold");
       doc.setTextColor(255, 255, 255);
       doc.text(
-        "Dr " + titleCase(docInfo?.doctor_name),
+        "Dr. " + titleCase(docInfo?.doctor_name),
         doc.internal.pageSize.getWidth() / 2,
         6.2,
         {
@@ -124,7 +124,7 @@ export default function Preview() {
               {titleCase(docInfo?.city_region)}, {titleCase(docInfo?.state)}
             </div> */}
             <div className="md:text-base text-sm">
-              Dr {titleCase(docInfo?.doctor_name)}
+              Dr. {titleCase(docInfo?.doctor_name)}
             </div>
             <div className="md:text-[13px] text-[11px] ">
               {titleCase(docInfo?.speciality)}
