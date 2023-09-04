@@ -113,14 +113,23 @@ export default function Preview() {
               );
             })}
           </div>
-          <div className="flex flex-col items-center text-white absolute w-full md:top-[387px] top-[328px]">
-            <div className="leading-5  md:text-base text-sm">
+          <div className="flex flex-col items-center text-white absolute w-full md:top-[387px] top-[325px] space-y-[-3px]">
+            {/* <div className="leading-5  md:text-base text-sm">
               Dr {titleCase(docInfo?.doctor_name)}
             </div>
             <div className="md:text-[13px] text-[11px] leading-4 mt-[-2px] ">
               {titleCase(docInfo?.speciality)}
             </div>
             <div className="md:text-[11px] text-[9px] leading-3">
+              {titleCase(docInfo?.city_region)}, {titleCase(docInfo?.state)}
+            </div> */}
+            <div className="md:text-base text-sm">
+              Dr {titleCase(docInfo?.doctor_name)}
+            </div>
+            <div className="md:text-[13px] text-[11px] ">
+              {titleCase(docInfo?.speciality)}
+            </div>
+            <div className="md:text-[11px] text-[9px] ">
               {titleCase(docInfo?.city_region)}, {titleCase(docInfo?.state)}
             </div>
           </div>
