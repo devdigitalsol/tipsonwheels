@@ -53,7 +53,7 @@ export default function Preview() {
       doc.setFont("helvetica", "", "bold");
       doc.setTextColor(255, 255, 255);
       doc.text(
-        titleCase(docInfo?.doctor_name),
+        "Dr " + titleCase(docInfo?.doctor_name),
         doc.internal.pageSize.getWidth() / 2,
         6.2,
         {
@@ -73,7 +73,7 @@ export default function Preview() {
       doc.setFontSize(12);
       doc.setFont("helvetica", "", "normal");
       doc.text(
-        `${docInfo?.city_region}, ${docInfo?.state}`,
+        `${titleCase(docInfo?.city_region)}, ${titleCase(docInfo?.state)}`,
         doc.internal.pageSize.getWidth() / 2,
         6.65,
         {
@@ -88,54 +88,6 @@ export default function Preview() {
         }-${new Date().getFullYear()}`
       );
       doc.save(`${pdfName}.pdf`);
-      // const doc = new jsPDF({
-      //   orientation: "portrait",
-      //   unit: "in",
-      //   format: "a5",
-      // });
-      // doc.addImage(PDFBG, "png", 0, 0, 5.8, 8.3);
-
-      // tips.map((tip, i) => {
-      //   doc.setFont("helvetica", "", "normal");
-      //   doc.setFontSize(26);
-      //   doc.setTextColor(40, 40, 40);
-      //   doc.addImage(tip.icon, "png", 1.3, 1.53 * i + 3.8, 1, 1);
-      //   doc.text(tip.text, 2.8, 1.52 * i + 4.2, { maxWidth: 7.5 });
-      // });
-      // doc.setFontSize(40);
-      // doc.setFont("helvetica", "", "bold");
-      // doc.setTextColor(255, 255, 255);
-      // doc.text(
-      //   docInfo?.doctor_name,
-      //   doc.internal.pageSize.getWidth() / 2,
-      //   12.5,
-      //   {
-      //     align: "center",
-      //   }
-      // );
-      // doc.setFontSize(30);
-      // doc.setFont("helvetica", "", "bold");
-      // doc.text(docInfo?.speciality, doc.internal.pageSize.getWidth() / 2, 13, {
-      //   align: "center",
-      // });
-      // doc.setFontSize(30);
-      // doc.setFont("helvetica", "", "normal");
-      // doc.text(
-      //   `${docInfo?.city_region}, ${docInfo?.state}`,
-      //   doc.internal.pageSize.getWidth() / 2,
-      //   13.5,
-      //   {
-      //     align: "center",
-      //   }
-      // );
-      // let pdfName = slugify(
-      //   `${docInfo?.doctor_code}-${
-      //     docInfo?.doctor_name
-      //   }-${new Date().getDate()}-${
-      //     new Date().getMonth() + 1
-      //   }-${new Date().getFullYear()}`
-      // );
-      // doc.save(`${pdfName}.pdf`);
     }
     fetchDoctors(user?.tm_id);
   };
@@ -161,15 +113,15 @@ export default function Preview() {
               );
             })}
           </div>
-          <div className="flex flex-col items-center text-white absolute w-full md:top-[395px] top-[328px]">
-            <div className="leading-5 uppercase md:text-base text-sm">
-              {titleCase(docInfo?.doctor_name)}
+          <div className="flex flex-col items-center text-white absolute w-full md:top-[387px] top-[328px]">
+            <div className="leading-5  md:text-base text-sm">
+              Dr {titleCase(docInfo?.doctor_name)}
             </div>
-            <div className="md:text-[13px] text-[11px] leading-3">
+            <div className="md:text-[13px] text-[11px] leading-4 mt-[-2px] ">
               {titleCase(docInfo?.speciality)}
             </div>
             <div className="md:text-[11px] text-[9px] leading-3">
-              {docInfo?.city_region}, {docInfo?.state}
+              {titleCase(docInfo?.city_region)}, {titleCase(docInfo?.state)}
             </div>
           </div>
           <img src={POSTER420} alt="poster" className="hidden md:block" />
