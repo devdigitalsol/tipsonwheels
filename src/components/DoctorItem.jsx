@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 // import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
+
 export default function DoctorItem({ doc }) {
   return (
     <Link

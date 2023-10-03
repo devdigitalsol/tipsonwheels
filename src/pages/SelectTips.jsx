@@ -17,6 +17,7 @@ export default function SelectTips() {
       navigate("/");
     }
   }, [docInfo, navigate]);
+
   const [fiveTips, setFiveTips] = useState([]);
   const [customText, setCustomText] = useState("");
 
@@ -26,6 +27,7 @@ export default function SelectTips() {
       navigate("/preview");
     }
   };
+
   return (
     <>
       <div className="md:px-10 w-full flex flex-col flex-grow px-4 py-4">

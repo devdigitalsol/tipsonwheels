@@ -9,6 +9,8 @@ import { jsPDF } from "jspdf";
 import PDFBG from "./../assets/images/tipbg.png";
 import slugify from "slugify";
 import { titleCase } from "../utils";
+import axios from "axios";
+import { apiService } from "../services/apiService";
 
 export default function Preview() {
   const navigate = useNavigate();
@@ -87,9 +89,57 @@ export default function Preview() {
           new Date().getMonth() + 1
         }-${new Date().getFullYear()}`
       );
+      const pdfblob = doc.output("blob");
       doc.save(`${pdfName}.pdf`);
+      uploadPdf(pdfblob);
     }
     fetchDoctors(user?.tm_id);
+  };
+
+  const uploadPdf = async (pdf) => {
+    const config = {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        Accept: "application/json, */*",
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    try {
+      let fd = new FormData();
+      fd.append(
+        "upload_file",
+        new Blob([pdf], { type: "application/pdf" }),
+        "pdf.pdf"
+      );
+      const resp = await axios.post(
+        "https://api.acidityfreelife.com/file_upload.php",
+        fd,
+        config
+      );
+      if (resp?.data?.status === 200) {
+        updatePdfPath(resp.data.filename);
+        console.log("Save pdf on server");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updatePdfPath = async (filename) => {
+    try {
+      const resp = await apiService.post("", {
+        operation: "save_pdf_path",
+        tm_id: user?.tm_id,
+        doctor_code: docInfo.doctor_code,
+        pdf_path: filename,
+      });
+      if (resp?.data?.status === 200) {
+        console.log("Pdf data save updatepdf");
+      }
+    } catch (error) {
+      toast.error(error.message);
+      console.log(error);
+    }
   };
 
   return (
